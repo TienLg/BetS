@@ -30,10 +30,16 @@ namespace BetS
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitContainer = new System.Windows.Forms.SplitContainer();
-            this.splitContainerBrowser = new System.Windows.Forms.SplitContainer();
-            this.btnGo = new System.Windows.Forms.Button();
-            this.tbUrl = new System.Windows.Forms.TextBox();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
             this.gbErrorFilter = new System.Windows.Forms.GroupBox();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.rbAllError = new System.Windows.Forms.RadioButton();
@@ -58,9 +64,7 @@ namespace BetS
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerBrowser)).BeginInit();
-            this.splitContainerBrowser.Panel1.SuspendLayout();
-            this.splitContainerBrowser.SuspendLayout();
+            this.tabControl.SuspendLayout();
             this.gbErrorFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -74,7 +78,7 @@ namespace BetS
             // 
             // splitContainer.Panel1
             // 
-            this.splitContainer.Panel1.Controls.Add(this.splitContainerBrowser);
+            this.splitContainer.Panel1.Controls.Add(this.tabControl);
             this.splitContainer.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
             // splitContainer.Panel2
@@ -95,41 +99,79 @@ namespace BetS
             this.splitContainer.SplitterDistance = 526;
             this.splitContainer.TabIndex = 0;
             // 
-            // splitContainerBrowser
+            // tabControl
             // 
-            this.splitContainerBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerBrowser.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerBrowser.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerBrowser.Name = "splitContainerBrowser";
-            this.splitContainerBrowser.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainerBrowser.Panel1
-            // 
-            this.splitContainerBrowser.Panel1.Controls.Add(this.btnGo);
-            this.splitContainerBrowser.Panel1.Controls.Add(this.tbUrl);
-            this.splitContainerBrowser.Size = new System.Drawing.Size(526, 444);
-            this.splitContainerBrowser.SplitterDistance = 28;
-            this.splitContainerBrowser.TabIndex = 0;
-            // 
-            // btnGo
-            // 
-            this.btnGo.Location = new System.Drawing.Point(3, 2);
-            this.btnGo.Name = "btnGo";
-            this.btnGo.Size = new System.Drawing.Size(34, 23);
-            this.btnGo.TabIndex = 1;
-            this.btnGo.Text = "GO";
-            this.btnGo.UseVisualStyleBackColor = true;
-            this.btnGo.Click += new System.EventHandler(this.btnGo_Click);
-            // 
-            // tbUrl
-            // 
-            this.tbUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbUrl.Location = new System.Drawing.Point(43, 5);
-            this.tbUrl.Name = "tbUrl";
-            this.tbUrl.Size = new System.Drawing.Size(480, 20);
-            this.tbUrl.TabIndex = 0;
-            this.tbUrl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbUrl_KeyDown);
+            this.tabControl.Controls.Add(this.tabPage1);
+            this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Controls.Add(this.tabPage3);
+            this.tabControl.Controls.Add(this.tabPage4);
+            this.tabControl.Controls.Add(this.tabPage5);
+            this.tabControl.Controls.Add(this.tabPage6);
+            this.tabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl.Location = new System.Drawing.Point(4, 4);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(519, 437);
+            this.tabControl.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(511, 408);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Bet1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(511, 408);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Bet2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(511, 408);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Bet3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(511, 408);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Bet4";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Location = new System.Drawing.Point(4, 25);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(511, 408);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Bet5";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Location = new System.Drawing.Point(4, 25);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(511, 408);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Bet6";
+            this.tabPage6.UseVisualStyleBackColor = true;
             // 
             // gbErrorFilter
             // 
@@ -143,21 +185,22 @@ namespace BetS
             this.gbErrorFilter.Controls.Add(this.tbBelowRangeError);
             this.gbErrorFilter.Controls.Add(this.label3);
             this.gbErrorFilter.Controls.Add(this.tbUpperRangeError);
-            this.gbErrorFilter.Location = new System.Drawing.Point(15, 241);
+            this.gbErrorFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbErrorFilter.Location = new System.Drawing.Point(3, 247);
             this.gbErrorFilter.Name = "gbErrorFilter";
-            this.gbErrorFilter.Size = new System.Drawing.Size(269, 70);
+            this.gbErrorFilter.Size = new System.Drawing.Size(281, 70);
             this.gbErrorFilter.TabIndex = 25;
             this.gbErrorFilter.TabStop = false;
-            this.gbErrorFilter.Text = "Error Filter";
+            this.gbErrorFilter.Text = "Result Filter";
             // 
             // btnRefresh
             // 
             this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefresh.Location = new System.Drawing.Point(194, 42);
+            this.btnRefresh.Location = new System.Drawing.Point(217, 43);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(69, 23);
+            this.btnRefresh.Size = new System.Drawing.Size(58, 23);
             this.btnRefresh.TabIndex = 25;
-            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.Text = "Apply";
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
@@ -167,7 +210,7 @@ namespace BetS
             this.rbAllError.Checked = true;
             this.rbAllError.Location = new System.Drawing.Point(6, 21);
             this.rbAllError.Name = "rbAllError";
-            this.rbAllError.Size = new System.Drawing.Size(36, 17);
+            this.rbAllError.Size = new System.Drawing.Size(41, 20);
             this.rbAllError.TabIndex = 22;
             this.rbAllError.TabStop = true;
             this.rbAllError.Text = "All";
@@ -178,10 +221,10 @@ namespace BetS
             this.rbNegativeError.AutoSize = true;
             this.rbNegativeError.Location = new System.Drawing.Point(121, 21);
             this.rbNegativeError.Name = "rbNegativeError";
-            this.rbNegativeError.Size = new System.Drawing.Size(40, 17);
+            this.rbNegativeError.Size = new System.Drawing.Size(50, 20);
             this.rbNegativeError.TabIndex = 24;
             this.rbNegativeError.TabStop = true;
-            this.rbNegativeError.Text = "< 0";
+            this.rbNegativeError.Text = "<= 0";
             this.rbNegativeError.UseVisualStyleBackColor = true;
             // 
             // label2
@@ -189,7 +232,7 @@ namespace BetS
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(5, 47);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 13);
+            this.label2.Size = new System.Drawing.Size(49, 16);
             this.label2.TabIndex = 18;
             this.label2.Text = "Range";
             // 
@@ -198,7 +241,7 @@ namespace BetS
             this.rbPositiveError.AutoSize = true;
             this.rbPositiveError.Location = new System.Drawing.Point(57, 21);
             this.rbPositiveError.Name = "rbPositiveError";
-            this.rbPositiveError.Size = new System.Drawing.Size(40, 17);
+            this.rbPositiveError.Size = new System.Drawing.Size(43, 20);
             this.rbPositiveError.TabIndex = 23;
             this.rbPositiveError.TabStop = true;
             this.rbPositiveError.Text = "> 0";
@@ -208,7 +251,7 @@ namespace BetS
             // 
             this.tbBelowRangeError.Location = new System.Drawing.Point(57, 44);
             this.tbBelowRangeError.Name = "tbBelowRangeError";
-            this.tbBelowRangeError.Size = new System.Drawing.Size(42, 20);
+            this.tbBelowRangeError.Size = new System.Drawing.Size(42, 22);
             this.tbBelowRangeError.TabIndex = 19;
             this.tbBelowRangeError.Text = "-1";
             this.tbBelowRangeError.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -218,7 +261,7 @@ namespace BetS
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(105, 47);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(10, 13);
+            this.label3.Size = new System.Drawing.Size(12, 16);
             this.label3.TabIndex = 20;
             this.label3.Text = "-";
             // 
@@ -226,7 +269,7 @@ namespace BetS
             // 
             this.tbUpperRangeError.Location = new System.Drawing.Point(121, 44);
             this.tbUpperRangeError.Name = "tbUpperRangeError";
-            this.tbUpperRangeError.Size = new System.Drawing.Size(42, 20);
+            this.tbUpperRangeError.Size = new System.Drawing.Size(42, 22);
             this.tbUpperRangeError.TabIndex = 21;
             this.tbUpperRangeError.Text = "1";
             this.tbUpperRangeError.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -234,9 +277,10 @@ namespace BetS
             // btnExecute
             // 
             this.btnExecute.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExecute.Location = new System.Drawing.Point(209, 212);
+            this.btnExecute.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExecute.Location = new System.Drawing.Point(178, 207);
             this.btnExecute.Name = "btnExecute";
-            this.btnExecute.Size = new System.Drawing.Size(69, 23);
+            this.btnExecute.Size = new System.Drawing.Size(100, 34);
             this.btnExecute.TabIndex = 14;
             this.btnExecute.Text = "Execute";
             this.btnExecute.UseVisualStyleBackColor = true;
@@ -250,18 +294,27 @@ namespace BetS
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(15, 317);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView.Location = new System.Drawing.Point(3, 323);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
-            this.dataGridView.Size = new System.Drawing.Size(269, 64);
+            this.dataGridView.Size = new System.Drawing.Size(281, 64);
             this.dataGridView.TabIndex = 15;
             // 
             // rbC
             // 
             this.rbC.AutoSize = true;
-            this.rbC.Location = new System.Drawing.Point(15, 153);
+            this.rbC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbC.Location = new System.Drawing.Point(3, 152);
             this.rbC.Name = "rbC";
-            this.rbC.Size = new System.Drawing.Size(32, 17);
+            this.rbC.Size = new System.Drawing.Size(35, 20);
             this.rbC.TabIndex = 12;
             this.rbC.Text = "C";
             this.rbC.UseVisualStyleBackColor = true;
@@ -269,9 +322,10 @@ namespace BetS
             // rbB
             // 
             this.rbB.AutoSize = true;
-            this.rbB.Location = new System.Drawing.Point(15, 94);
+            this.rbB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbB.Location = new System.Drawing.Point(3, 93);
             this.rbB.Name = "rbB";
-            this.rbB.Size = new System.Drawing.Size(32, 17);
+            this.rbB.Size = new System.Drawing.Size(35, 20);
             this.rbB.TabIndex = 11;
             this.rbB.Text = "B";
             this.rbB.UseVisualStyleBackColor = true;
@@ -280,9 +334,10 @@ namespace BetS
             // 
             this.rbA.AutoSize = true;
             this.rbA.Checked = true;
-            this.rbA.Location = new System.Drawing.Point(15, 35);
+            this.rbA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbA.Location = new System.Drawing.Point(3, 34);
             this.rbA.Name = "rbA";
-            this.rbA.Size = new System.Drawing.Size(32, 17);
+            this.rbA.Size = new System.Drawing.Size(35, 20);
             this.rbA.TabIndex = 10;
             this.rbA.TabStop = true;
             this.rbA.Text = "A";
@@ -293,20 +348,21 @@ namespace BetS
             this.tbFormula.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbFormula.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbFormula.Location = new System.Drawing.Point(15, 400);
+            this.tbFormula.Location = new System.Drawing.Point(3, 409);
             this.tbFormula.Multiline = true;
             this.tbFormula.Name = "tbFormula";
             this.tbFormula.Size = new System.Drawing.Size(269, 32);
             this.tbFormula.TabIndex = 8;
-            this.tbFormula.Text = "((a+1)/3-(b+2)/10)/(b+2)/10";
+            this.tbFormula.Text = "1/a+1/b<1";
             // 
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 384);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(3, 390);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 13);
+            this.label4.Size = new System.Drawing.Size(57, 16);
             this.label4.TabIndex = 7;
             this.label4.Text = "Formula";
             // 
@@ -315,34 +371,36 @@ namespace BetS
             this.tbNumC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbNumC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbNumC.Location = new System.Drawing.Point(53, 153);
+            this.tbNumC.Location = new System.Drawing.Point(44, 148);
             this.tbNumC.Multiline = true;
             this.tbNumC.Name = "tbNumC";
             this.tbNumC.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbNumC.Size = new System.Drawing.Size(231, 53);
+            this.tbNumC.Size = new System.Drawing.Size(240, 53);
             this.tbNumC.TabIndex = 6;
             // 
             // cbTextCapture
             // 
             this.cbTextCapture.AutoSize = true;
+            this.cbTextCapture.BackColor = System.Drawing.SystemColors.Control;
+            this.cbTextCapture.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbTextCapture.ForeColor = System.Drawing.Color.Blue;
-            this.cbTextCapture.Location = new System.Drawing.Point(15, 12);
+            this.cbTextCapture.Location = new System.Drawing.Point(3, 4);
             this.cbTextCapture.Name = "cbTextCapture";
-            this.cbTextCapture.Size = new System.Drawing.Size(87, 17);
+            this.cbTextCapture.Size = new System.Drawing.Size(103, 20);
             this.cbTextCapture.TabIndex = 4;
             this.cbTextCapture.Text = "Text Capture";
-            this.cbTextCapture.UseVisualStyleBackColor = true;
+            this.cbTextCapture.UseVisualStyleBackColor = false;
             // 
             // tbNumB
             // 
             this.tbNumB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbNumB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbNumB.Location = new System.Drawing.Point(53, 94);
+            this.tbNumB.Location = new System.Drawing.Point(44, 89);
             this.tbNumB.Multiline = true;
             this.tbNumB.Name = "tbNumB";
             this.tbNumB.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbNumB.Size = new System.Drawing.Size(231, 53);
+            this.tbNumB.Size = new System.Drawing.Size(240, 53);
             this.tbNumB.TabIndex = 1;
             // 
             // tbNumA
@@ -350,11 +408,11 @@ namespace BetS
             this.tbNumA.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbNumA.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbNumA.Location = new System.Drawing.Point(53, 35);
+            this.tbNumA.Location = new System.Drawing.Point(44, 30);
             this.tbNumA.Multiline = true;
             this.tbNumA.Name = "tbNumA";
             this.tbNumA.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbNumA.Size = new System.Drawing.Size(231, 53);
+            this.tbNumA.Size = new System.Drawing.Size(240, 53);
             this.tbNumA.TabIndex = 0;
             // 
             // MainForm
@@ -363,6 +421,7 @@ namespace BetS
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(826, 444);
             this.Controls.Add(this.splitContainer);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "BetS";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -371,10 +430,7 @@ namespace BetS
             this.splitContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
             this.splitContainer.ResumeLayout(false);
-            this.splitContainerBrowser.Panel1.ResumeLayout(false);
-            this.splitContainerBrowser.Panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerBrowser)).EndInit();
-            this.splitContainerBrowser.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
             this.gbErrorFilter.ResumeLayout(false);
             this.gbErrorFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
@@ -394,10 +450,6 @@ namespace BetS
         private System.Windows.Forms.RadioButton rbC;
         private System.Windows.Forms.RadioButton rbB;
         private System.Windows.Forms.RadioButton rbA;
-        private System.Windows.Forms.SplitContainer splitContainerBrowser;
-        private System.Windows.Forms.Button btnGo;
-        private System.Windows.Forms.TextBox tbUrl;
-        private Gecko.GeckoWebBrowser browser;
         private DataTable statisticTable;
         private DataView dataView;
         private System.Windows.Forms.Button btnExecute;
@@ -411,6 +463,13 @@ namespace BetS
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox gbErrorFilter;
         private System.Windows.Forms.Button btnRefresh;
+        private TabControl tabControl;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
+        private TabPage tabPage3;
+        private TabPage tabPage4;
+        private TabPage tabPage5;
+        private TabPage tabPage6;
     }
 }
 

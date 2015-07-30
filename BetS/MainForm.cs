@@ -20,11 +20,19 @@ namespace BetS
             InitializeComponent();
             createTable();
             // Init Gecko Browser
-            browser = new GeckoWebBrowser();
-            browser.Dock = DockStyle.Fill;
-            browser.DomClick += onDomClick;
-            browser.Navigate(@"https://www.tipico.com/en/online-sports-betting/");
-            splitContainerBrowser.Panel2.Controls.Add(browser);
+            initTabPages();
+        }
+
+        private void initTabPages()
+        {
+            TabControl.TabPageCollection tabpages = tabControl.TabPages;
+            foreach (TabPage page in tabpages)
+            {
+                BetBrowser browserControl = new BetBrowser();
+                browserControl.Dock = DockStyle.Fill;
+                browserControl.TextCaptured += onBrowserTextCaptured;
+                page.Controls.Add(browserControl);
+            }
         }
 
         private void createTable()
@@ -40,7 +48,7 @@ namespace BetS
 
             statisticTable.Columns.Add("NumberA", typeof(Double));
             statisticTable.Columns.Add("NumberB", typeof(Double));
-            statisticTable.Columns.Add("Error", typeof(Double));
+            statisticTable.Columns.Add("Result", typeof(Double));
 
             // setup datagridview
             dataGridView.AutoGenerateColumns = false;
@@ -58,9 +66,9 @@ namespace BetS
             dataGridView.Columns[1].DataPropertyName = "NumberB";
             dataGridView.Columns[1].Width = 50;
 
-            dataGridView.Columns[2].Name = "Error";
-            dataGridView.Columns[2].HeaderText = "Error";
-            dataGridView.Columns[2].DataPropertyName = "Error";
+            dataGridView.Columns[2].Name = "Result";
+            dataGridView.Columns[2].HeaderText = "Result";
+            dataGridView.Columns[2].DataPropertyName = "Result";
             dataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             // setup DataView
@@ -74,16 +82,12 @@ namespace BetS
 
         }
 
-        private void onDomClick(object sender, DomEventArgs e)
+        private void onBrowserTextCaptured(object sender, TextCapturedEventArgs e)
         {
             if (!cbTextCapture.Checked)
                 return;
-            if (sender == null || e == null || e.Target == null)
+            if (sender == null || e == null)
                 return;
-            GeckoHtmlElement element = (GeckoHtmlElement)e.Target.CastToGeckoElement();
-            if (element == null)
-                return;
-            // MessageBox.Show(element.TextContent.Trim());
             
             TextBox tb = null;
             if (rbA.Checked)
@@ -94,24 +98,10 @@ namespace BetS
                 tb = tbNumC;
             if (tb != null)
             {
-                double number;
-                if (Double.TryParse(element.TextContent.Trim().Replace(',','.'), out number))
+                if (!double.IsNaN(e.Odd))
                 {
-                    tb.Text += number + ";   ";
+                    tb.Text += e.Odd + ";   ";
                 }
-            }
-        }
-
-        private void btnGo_Click(object sender, EventArgs e)
-        {
-            browser.Navigate(tbUrl.Text);
-        }
-
-        private void tbUrl_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                browser.Navigate(tbUrl.Text);
             }
         }
 
@@ -127,11 +117,10 @@ namespace BetS
             parser.Parse(func);
             Expression expression = parser.Expressions[func];
 
-            // Execute
+            // Reset
             if (statisticTable.Rows.Count > 0)
                 statisticTable.Rows.Clear();
-            if (dataGridView.Rows.Count > 1)
-                dataGridView.Rows.Clear();
+            dataView.RowFilter = "1=1";
 
             foreach (double[] arr in collectSet)
             {
@@ -142,7 +131,7 @@ namespace BetS
                 DataRow row = statisticTable.NewRow();
                 row["NumberA"] = arr[0];
                 row["NumberB"] = arr[1];
-                row["Error"] = Math.Round( result, 4);
+                row["Result"] = Math.Round(result, 4);
                 statisticTable.Rows.Add(row);
             }
 
@@ -155,7 +144,7 @@ namespace BetS
             // return value
             List<double[]> collectSet = new List<double[]>();
             // Set Regx
-            string pattern = @"\d+([.,]\d{1,3})*;";
+            string pattern = @"\d+([.,]\d{1,3})?;";
             
             Regex rgx = new Regex(pattern, RegexOptions.IgnoreCase);
             // collect numbers A
@@ -193,11 +182,15 @@ namespace BetS
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            dataView.RowFilter = "Error < " + tbUpperRangeError.Text + " and Error > " + tbBelowRangeError.Text;
+            dataView = statisticTable.DefaultView;
+            double nUpper, nBelow;
+            Double.TryParse(tbUpperRangeError.Text, out nUpper);
+            Double.TryParse(tbBelowRangeError.Text, out nBelow);
+            dataView.RowFilter = String.Format("Result >= {1} AND Result <= {0}", nUpper, nBelow);
             if (rbPositiveError.Checked)
-                dataView.RowFilter += " and Error > 0";
+                dataView.RowFilter += " AND Result > 0";
             if (rbNegativeError.Checked)
-                dataView.RowFilter += " and Error < 0";
+                dataView.RowFilter += " AND Result <= 0";
         }
     }
 }
