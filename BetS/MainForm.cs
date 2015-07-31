@@ -48,12 +48,13 @@ namespace BetS
 
             statisticTable.Columns.Add("NumberA", typeof(Double));
             statisticTable.Columns.Add("NumberB", typeof(Double));
+            statisticTable.Columns.Add("NumberC", typeof(Double));
             statisticTable.Columns.Add("Result", typeof(Double));
 
             // setup datagridview
             dataGridView.AutoGenerateColumns = false;
             //Set Columns Count
-            dataGridView.ColumnCount = 3;
+            dataGridView.ColumnCount = 4;
 
             //Add Columns
             dataGridView.Columns[0].Name = "numberA";
@@ -66,10 +67,15 @@ namespace BetS
             dataGridView.Columns[1].DataPropertyName = "NumberB";
             dataGridView.Columns[1].Width = 50;
 
-            dataGridView.Columns[2].Name = "Result";
-            dataGridView.Columns[2].HeaderText = "Result";
-            dataGridView.Columns[2].DataPropertyName = "Result";
-            dataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView.Columns[2].HeaderText = "C";
+            dataGridView.Columns[2].Name = "numberC";
+            dataGridView.Columns[2].DataPropertyName = "NumberC";
+            dataGridView.Columns[2].Width = 50;
+
+            dataGridView.Columns[3].Name = "Result";
+            dataGridView.Columns[3].HeaderText = "Result";
+            dataGridView.Columns[3].DataPropertyName = "Result";
+            dataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             // setup DataView
             dataView = statisticTable.DefaultView;
@@ -111,8 +117,9 @@ namespace BetS
             List<double[]> collectSet = collectNumbers();
             // Parse Expression
             ExpressionParser parser = new ExpressionParser();
-            parser.Values.Add("a", 10);
-            parser.Values.Add("b", 7);
+            parser.Values.Add("a", 1);
+            parser.Values.Add("b", 1);
+            parser.Values.Add("c", 1);
             string func = tbFormula.Text;
             parser.Parse(func);
             Expression expression = parser.Expressions[func];
@@ -126,11 +133,13 @@ namespace BetS
             {
                 parser.Values["a"].SetValue(arr[0]);
                 parser.Values["b"].SetValue(arr[1]);
+                parser.Values["c"].SetValue(arr[2]);
                 double result = parser.EvalExpression(expression);
 
                 DataRow row = statisticTable.NewRow();
                 row["NumberA"] = arr[0];
                 row["NumberB"] = arr[1];
+                row["NumberC"] = arr[2];
                 row["Result"] = Math.Round(result, 4);
                 statisticTable.Rows.Add(row);
             }
@@ -162,17 +171,38 @@ namespace BetS
                 return collectSet;
             }
             // collect numbers C
-            // To-Do
+            MatchCollection matchesC = rgx.Matches(tbNumC.Text);
+            if (matchesC.Count <= 0)
+            {
+                MessageBox.Show("Please enter C if formula has.");
+                //return collectSet;
+            }
+
             // Do combine sets
             foreach (Match matchA in matchesA) {
-                double nA, nB;
+                double nA = 0;
+                double nB = 0;
+                double nC = 0;
                 Double.TryParse(Regex.Replace(matchA.Value, ";", string.Empty), out nA);
 
                 foreach (Match matchB in matchesB)
                 {
                     Double.TryParse(Regex.Replace(matchB.Value, ";", string.Empty), out nB);
-                    double[] arr = new double[] { nA, nB};
-                    collectSet.Add(arr);
+
+                    if (matchesC.Count > 0)
+                    {
+                        foreach (Match matchC in matchesC)
+                        {
+                            Double.TryParse(Regex.Replace(matchC.Value, ";", string.Empty), out nC);
+                            double[] arr = new double[] { nA, nB, nC };
+                            collectSet.Add(arr);
+                        }
+                    }
+                    else
+                    {
+                        double[] arr = new double[] { nA, nB, 0 };
+                        collectSet.Add(arr);
+                    } 
                 }
             }
 
