@@ -1,0 +1,64 @@
+You have 2+ years of software development experience.
+Strong Experience in Node.js/Angular.js or both:
+-	At least 1 year of Node.js/Angular.js experience for Senior (2 vacancies)
+-	At least 6 months experience about Node.js for Junior (1 vacancy)
+EXCELLENT in HTML5/CSS3 & Javascript; Experience with OOP JavaScript 
+Know Java; Back-End Development
+A willingness to help out when your colleagues needs you.
+Leadership, creativity, ability to work well with others and to unite teams.
+Good at English language skills.
+----------------------------------------------------------------------------------------------------------------------------------
+
+Qualifications for this Opportunity
+
+If you want to work with the best, you have to be the best. A successful C# Software Architect at Crossover will demonstrate the following qualifications:
+
+-6+ years of experience as both a hands-on architect and a software engineer
+-Bachelor’s Degree in Computer Science, Electrical Engineering, or Computer Engineering (further education is a plus)
+-Leadership experience in creating, deploying, and iterating excellent software
+-Proficiency in the following skills and technologies is mandatory:
+Visual Studio .NET
+Web Services and REST
+SOA, EDA, and design patterns
+Cloud computing architecting
+noSQL (MongoDB and/or cassandra)
+Linux
+DevOps
+-Proficiency in the Hadoop, MVVC, and knowledge of another programming language (Java, Ruby, PHP) is desired but not mandatory..
+
+
+The Type of C# Software Architects We’re Looking For
+
+Crossover values a culture of excellence. We need software architects who are not only technically proficient, but also demonstrate the following qualities:
+
+-A willingness to embrace the concept of iterative development as the means for building excellent products
+-Readiness to give all the effort necessary to do an excellent job - even if it means putting in extra time to research the problem you’re facing
+-Perfectionism: knowing how it should be done and not stop until it’s done right
+-Excellent communication skills (in English)
+----------------------------------------------------------------------------------------------------------------------------------
+
+Qualifications for this Opportunity
+
+If you want to work with the best, you have to be the best. A successful C# Engineer at Crossover will demonstrate the following qualifications:
+
+-3+ years of experience as a software engineer using C#.NET
+-A ruthless commitment to testing the code you’ve written
+-Extensive problem solving skills
+-An ability to communicate clearly regarding complex issues (in English)
+-Proficiency in the following skills and technologies is mandatory:
+Visual Studio .NET
+Web Services
+REST
+Database (SQL server, Oracle, MySQL)
+Enterprise applications
+Web API, WCF, MVC, and ASP.net
+-Proficiency in the following technologies is desired but not mandatory: NHibernate, Design patterns, noSQL
+
+
+The Type of C# Engineers We’re Looking For
+
+Crossover values a culture of excellence. We need engineers who are not only technically proficient, but also demonstrate the following qualities:
+
+-Willingness to embrace the concept of iterative development as the means for building seamless products
+-Readiness to give all the effort necessary to do an excellent job - even if it means putting in extra time to research the problem you’re facing
+-Perfectionism: knowing how a job should be done and not stop until it’s done correctly
